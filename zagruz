@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+log_dir="/home/alex"
+log_file="$log_dir/log_file.txt"  
+
+PARAM1="value1"
+echo "PARAM1: ${PARAM1}"
+
+if  [ "${PARAM1}" = "value1" ]; then
+        echo "PARAM1 IS HERE!"
+   
+        top -bn1 | grep "load average" | awk '{print "Avg 1 min:" $10 " 5 min: " $11 "  15 min: " $12}' >> "$log_file"
+ else
+        echo "There is no param1 here"
+        whoami
+fi
+
+
+echo "$PARAM1" >> "$log_file"
